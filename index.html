@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Học Tập Tiếng Anh | Lớp 8 - 12</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset CSS & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #0ea5e9;
+            --danger-color: #e11d48;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        header {
+            background: var(--bg-gradient);
+            padding: 5rem 1rem 4rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        header h1 span {
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            margin-top: 0.5em;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Grid Lớp học (Global Success) */
+        .grid-classes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .class-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.1);
+        }
+
+        .class-card .badge {
+            background-color: #eef2ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .class-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Grid Ngữ pháp & Câu điều kiện */
+        .grid-tenses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tense-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover .tense-card {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--secondary-color);
+        }
+
+        /* Khi hover vào card màu đỏ (Câu điều kiện) */
+        .card-link.conditional-link:hover .tense-card {
+            border-color: var(--danger-color);
+        }
+
+        .tense-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+            transition: color 0.3s ease;
+        }
+
+        .tense-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-study {
+            display: inline-block;
+            align-self: flex-start;
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover .btn-study {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .card-link.conditional-link:hover .btn-study {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #0f172a;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .grid-classes { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .grid-classes { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Học Tiếng Anh <span>Bứt Phá Điểm Số</span></h1>
+            <p>Hệ thống bài học theo sát chương trình Global Success từ lớp 8 đến lớp 12 và trọn bộ bí kíp làm chủ cấu trúc Tiếng Anh.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section>
+            <h2 class="section-title">Chương Trình Global Success</h2>
+            <div class="grid-classes">
+                
+                <a href="global-success-8.html" class="class-card">
+                    <span class="badge">THCS</span>
+                    <h3>Tiếng Anh 8</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">Global Success 8</p>
+                </a>
+
+                <a href="global-success-9.html" class="class-card">
+                    <span class="badge">THCS</span>
+                    <h3>Tiếng Anh 9</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">Global Success 9</p>
+                </a>
+
+                <a href="global-success-10.html" class="class-card">
+                    <span class="badge" style="background-color: #fff7ed; color: #ea580c;">THPT</span>
+                    <h3>Tiếng Anh 10</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">Global Success 10</p>
+                </a>
+
+                <a href="global-success-11.html" class="class-card">
+                    <span class="badge" style="background-color: #fff7ed; color: #ea580c;">THPT</span>
+                    <h3>Tiếng Anh 11</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">Global Success 11</p>
+                </a>
+
+                <a href="global-success-12.html" class="class-card">
+                    <span class="badge" style="background-color: #fff7ed; color: #ea580c;">THPT</span>
+                    <h3>Tiếng Anh 12</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light);">Global Success 12</p>
+                </a>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Làm Chủ 12 Thì Tiếng Anh</h2>
+            <div class="grid-tenses">
+                
+                <a href="hien-tai-don.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Hiện Tại Đơn</h3>
+                        <p>Present Simple Tense - Diễn tả hành động lặp đi lặp lại hoặc một sự thật hiển nhiên.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="hien-tai-tiep-dien.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Hiện Tại Tiếp Diễn</h3>
+                        <p>Present Continuous Tense - Diễn tả hành động đang diễn ra ngay tại thời điểm nói.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="hien-tai-hoan-thanh.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Hiện Tại Hoàn Thành</h3>
+                        <p>Present Perfect Tense - Diễn tả hành động đã hoàn thành tính đến thời điểm hiện tại.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="qua-khu-don.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Quá Khứ Đơn</h3>
+                        <p>Past Simple Tense - Diễn tả hành động đã chấm dứt hoàn toàn trong quá khứ.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="qua-khu-tiep-dien.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Quá Khứ Tiếp Diễn</h3>
+                        <p>Past Continuous Tense - Diễn tả hành động đang diễn ra tại một thời điểm trong quá khứ.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="tuong-lai-don.html" class="card-link">
+                    <div class="tense-card">
+                        <h3>Tương Lai Đơn</h3>
+                        <p>Simple Future Tense - Diễn tả một quyết định hay kế hoạch nảy sinh ngay lúc nói.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section style="margin-top: 5rem;">
+            <h2 class="section-title">Các Cấu Trúc Câu Điều Kiện</h2>
+            <div class="grid-tenses">
+                
+                <a href="loai-1.html" class="card-link conditional-link">
+                    <div class="tense-card">
+                        <h3 style="color: var(--danger-color);">Câu Điều Kiện Loại 1</h3>
+                        <p>Conditional Type 1 - Diễn tả một giả thiết hoàn toàn có thật và có thể xảy ra ở hiện tại hoặc tương lai.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="loai-2.html" class="card-link conditional-link">
+                    <div class="tense-card">
+                        <h3 style="color: var(--danger-color);">Câu Điều Kiện Loại 2</h3>
+                        <p>Conditional Type 2 - Giả thiết trái ngược hoàn toàn với sự thật ở hiện tại, không thể xảy ra lúc này.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="loai-3.html" class="card-link conditional-link">
+                    <div class="tense-card">
+                        <h3 style="color: var(--danger-color);">Câu Điều Kiện Loại 3</h3>
+                        <p>Conditional Type 3 - Diễn tả một giả thiết không có thật trong quá khứ và để lại sự tiếc nuối.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="loai-hon-hop.html" class="card-link conditional-link">
+                    <div class="tense-card">
+                        <h3 style="color: var(--danger-color);">Câu Điều Kiện Hỗn Hợp</h3>
+                        <p>Mixed Conditionals - Kết hợp giả thiết quá khứ và kết quả hiện tại hoặc ngược lại để làm bài nâng cao.</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="dao-ngu-bien-the.html" class="card-link conditional-link">
+                    <div class="tense-card">
+                        <h3 style="color: var(--danger-color);">Đảo Ngữ & Các Biến Thể</h3>
+                        <p>Inversion & Alternatives - Đảo ngữ với Should/Were/Had, cấu trúc Unless, As long as, Provided that...</p>
+                        <span class="btn-study">Học ngay &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Study Web Landing Page. Thiết kế cho học sinh Lớp 8 - 12.</p>
+    </footer>
+
+</body>
+</html>
