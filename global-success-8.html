@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Tiếng Anh 8 - Global Success (Chi tiết)</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e293b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --accent-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            font-weight: 800;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.85;
+            font-size: 1.2rem;
+        }
+
+        /* CSS cho Thanh điều hướng nhanh */
+        .quick-nav-bar {
+            background-color: var(--card-bg);
+            max-width: 1000px;
+            margin: 1.5rem auto 0 auto;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .quick-nav-bar label {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        #unit-select {
+            padding: 0.6rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-color);
+            outline: none;
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        #unit-select:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-jump {
+            background-color: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-jump:hover {
+            background-color: #7c3aed;
+        }
+
+        @media (max-width: 640px) {
+            .quick-nav-bar {
+                flex-direction: column;
+                align-items: stretch;
+                margin: 1rem 1.5rem 0 1.5rem;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            padding-bottom: 6rem;
+        }
+
+        .unit-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            border-top: 6px solid var(--primary-color);
+            display: none;
+        }
+
+        .unit-card.active {
+            display: block;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .unit-title {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.75rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.35rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Vocab Section */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .vocab-item {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .vocab-item:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f7ff;
+        }
+
+        .vocab-word {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            display: block;
+        }
+
+        .vocab-synonyms {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.2rem;
+            font-style: italic;
+        }
+
+        .vocab-mean {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Grammar & Note Boxes */
+        .formula-box {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 1.2rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.05rem;
+            color: #0f172a;
+            margin: 1rem 0;
+            border-left: 4px solid var(--warning-color);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .note-box {
+            background-color: #fffbeb;
+            border-left: 4px solid var(--warning-color);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .note-box strong {
+            color: #b45309;
+        }
+
+        .example-block {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--success-color);
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example-block p {
+            margin: 0.25rem 0;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .badge-purple {
+            background-color: #f3e8ff;
+            color: var(--accent-purple);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Quiz System */
+        .quiz-section {
+            background-color: #fafafa;
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quiz-header {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-item {
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .options-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 640px) {
+            .options-list { grid-template-columns: 1fr; }
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .option-label:hover {
+            border-color: var(--primary-color);
+            background-color: #f8fafc;
+        }
+
+        .option-label input {
+            margin-right: 0.75rem;
+            transform: scale(1.1);
+        }
+
+        /* Chấm điểm Styles từ JS */
+        .option-label.correct-ans {
+            background-color: #d1fae5 !important;
+            border-color: var(--success-color) !important;
+            color: #065f46;
+            font-weight: 600;
+        }
+
+        .option-label.wrong-ans {
+            background-color: #fee2e2 !important;
+            border-color: var(--danger-color) !important;
+            color: #991b1b;
+        }
+
+        .explanation {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #eff6ff;
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        /* Buttons */
+        .btn-wrapper {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-submit:hover { background-color: #2563eb; }
+
+        .btn-nav {
+            background-color: var(--success-color);
+            color: white;
+            margin-left: auto;
+        }
+
+        .btn-nav:hover { background-color: #059669; }
+
+        .score-box {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Global Success 8</h1>
+        <p>Học Ngữ Pháp & Từ Vựng Chi Tiết Trực Tuyến</p>
+    </header>
+
+    <div class="quick-nav-bar">
+        <label for="unit-select">Chuyển nhanh đến: </label>
+        <select id="unit-select">
+            <option value="1">Unit 1: Leisure Time</option>
+            <option value="2">Unit 2: Life in the Countryside</option>
+            <option value="3">Unit 3: Teenagers</option>
+            <option value="4">Unit 4: Questions</option>
+            <option value="5">Unit 5: Our customs and traditions</option>
+            <option value="6">Unit 6: Lifestyles</option>
+            <option value="7">Unit 7: Environmental protection</option>
+            <option value="8">Unit 8: Shopping</option>
+            <option value="9">Unit 9: Natural disasters</option>
+            <option value="10">Unit 10: Communication</option>
+            <option value="11">Unit 11: Science and technology</option>
+            <option value="12">Unit 12: Life on other planets </option>
+        </select>
+        <button class="btn-jump" onclick="jumpToUnit()">Đi ngay ➔</button>
+    </div>
+
+    <div class="container">
+
+        <section id="unit-1" class="unit-card active">
+            <h2 class="unit-title">Unit 1: Leisure Time (Thời gian rảnh rỗi)</h2>
+            
+            <h3>1. Động từ chỉ sự yêu thích & ghét (Verbs of liking & disliking)</h3>
+            <p>Trong tiếng Anh, để diễn tả các mức độ thích hoặc ghét khác nhau, chúng ta sử dụng các nhóm từ vựng cụ thể sau:</p>
+            
+            <div class="vocab-grid">
+                <div class="vocab-item">
+                    <span class="vocab-word">like / love / enjoy</span>
+                    <span class="vocab-synonyms">Mức độ cơ bản</span>
+                    <span class="vocab-mean">Thích, yêu thích, tận hưởng</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">be interested in / be fond of / be keen on</span>
+                    <span class="vocab-synonyms">Đi kèm giới từ (Tính từ)</span>
+                    <span class="vocab-mean">Hứng thú, thích, quan tâm đến cái gì</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">be crazy about / be into</span>
+                    <span class="vocab-mean">Cuồng, cực kỳ say mê cái gì</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">fancy / adore</span>
+                    <span class="vocab-mean">Mến mộ, thích, ngưỡng mộ</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-word">dislike / hate / detest</span>
+                    <span class="vocab-synonyms">Mức độ ghét tăng dần</span>
+                    <span class="vocab-mean">Không thích, ghét, căm ghét/cực kỳ ghét</span>
+                </div>
+            </div>
+
+            <h3>2. Cấu trúc Ngữ pháp và Cách chia Động từ</h3>
+            <p>Sau các động từ chỉ ý thích, động từ đi kèm phía sau bắt buộc phải tuân theo các nguyên tắc dưới đây:</p>
+            
+            <ul>
+                <li>
+                    <span class="badge">Trường hợp 1</span> <strong>Chỉ đi với Danh động từ (V-ing):</strong><br>
+                    Các từ: <em>detest, fancy, dislike, enjoy, adore</em> + <strong>V-ing</strong>
+                    <div class="example-block">
+                        <p>• I <strong>fancy making</strong> origami models. <em>(Tớ thích gấp giấy origami.)</em></p>
+                        <p>• She <strong>detests washing</strong> dishes. <em>(Cô ấy cực kỳ ghét rửa bát.)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="badge badge-purple">Trường hợp 2</span> <strong>Đi với cả V-ing lẫn To-Infinitive (To V):</strong><br>
+                    Các từ: <em>love, like, hate, prefer</em> + <strong>V-ing / to V</strong>
+                    <div class="note-box">
+                        <strong>💡 Lưu ý phân biệt bẫy:</strong> Về cơ bản ý nghĩa không đổi nhiều, nhưng <strong>V-ing</strong> nhấn mạnh vào quá trình/sở thích lâu dài, còn <strong>To V</strong> nhấn mạnh vào hành động mang tính lựa chọn hoặc thói quen tại một thời điểm.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>3. Chức năng giao tiếp: Đưa ra lời mời, gợi ý</h3>
+            <div class="formula-box">
+                • Would you like + to V...? -> Trả lời: Yes, I'd love to. / I'm sorry, I can't.<br>
+                • Do you fancy + V-ing...? -> Trả lời: That sounds great! / Thks, but I don't really like it.
+            </div>
+
+            <h3>4. Cụm động từ (Phrasal Verbs) cần nhớ</h3>
+            <div class="example-block">
+                <strong>look for + Something/Someone</strong> = find Something/Someone (Tìm kiếm cái gì/ai đó)
+            </div>
+
+            <div class="quiz-section" data-unit="1">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 1</div>
+                
+                <div class="question-item" data-correct="C" data-exp="Sau động từ 'fancy' bắt buộc phải dùng động từ dạng V-ing.">
+                    <p class="question-text">Câu 1: Do you fancy ___________ a movie with me tonight?</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u1q1" value="A"> to watch</label>
+                        <label class="option-label"><input type="radio" name="u1q1" value="B"> watch</label>
+                        <label class="option-label"><input type="radio" name="u1q1" value="C"> watching</label>
+                        <label class="option-label"><input type="radio" name="u1q1" value="D"> watched</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="B" data-exp="Tính từ 'keen' đi kèm với giới từ 'on' để tạo thành cụm 'be keen on' (thích/đam mê).">
+                    <p class="question-text">Câu 2: My brother is very keen ___________ playing computer games.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u1q2" value="A"> in</label>
+                        <label class="option-label"><input type="radio" name="u1q2" value="B"> on</label>
+                        <label class="option-label"><input type="radio" name="u1q2" value="C"> at</label>
+                        <label class="option-label"><input type="radio" name="u1q2" value="D"> about</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(1)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(2)">Học tiếp Unit 2 ➔</button>
+                </div>
+                <div class="score-box" id="score-u1"></div>
+            </div>
+        </section>
+
+        <section id="unit-2" class="unit-card">
+            <h2 class="unit-title">Unit 2: Life in the Countryside (Cuộc sống vùng nông thôn)</h2>
+            
+            <h3>Ngữ pháp chuyên sâu: So sánh hơn của Trạng từ (Comparative Adverbs)</h3>
+            <p>Trạng từ dùng để bổ nghĩa cho động từ thường. Khi so sánh hành động của hai đối tượng, chúng ta sử dụng cấu trúc so sánh hơn của trạng từ.</p>
+
+            <p><strong>1. Trạng từ dài (Có từ 2 âm tiết trở lên kết thúc bằng đuôi -ly):</strong></p>
+            <div class="formula-box">
+                Cấu trúc: S1 + V (động từ thường) + more + Trạng từ dài + than + S2
+            </div>
+            <div class="example-block">
+                <p>• She speaks English <strong>more fluently</strong> than her friend.</p>
+            </div>
+
+            <p><strong>2. Trạng từ ngắn (Trạng từ có một âm tiết, hình thức giống tính từ):</strong></p>
+            <div class="formula-box">
+                Cấu trúc: S1 + V (động từ thường) + Trạng từ ngắn-er + than + S2
+            </div>
+            <div class="note-box">
+                <strong>⚠️ Chú ý:</strong> Các từ như <em>fast, hard, soon, early, late</em> vừa là tính từ vừa là trạng từ. Khi ở dạng so sánh hơn, ta chỉ cần thêm đuôi <strong>-er</strong> chứ KHÔNG dùng "more".
+            </div>
+            <div class="example-block">
+                <p>• Rain comes <strong>earlier</strong> in the countryside than in the city.</p>
+                <p>• He works <strong>harder</strong> than anyone else.</p>
+            </div>
+
+            <h3>3. Các trường hợp trạng từ bất quy tắc (Bắt buộc thuộc lòng)</h3>
+            <p>Những trạng từ này biến đổi hoàn toàn hình thái khi chuyển sang dạng so sánh hơn:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trạng từ nguyên thể</th>
+                        <th>Dạng so sánh hơn</th>
+                        <th>Ý nghĩa & Cách dùng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>well</strong> (tốt)</td>
+                        <td><span class="badge">better</span></td>
+                        <td>Tốt hơn (bổ nghĩa cho động từ thường)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>badly</strong> (tồi tệ/kém)</td>
+                        <td><span class="badge badge-purple">worse</span></td>
+                        <td>Kém hơn, tệ hơn</td>
+                    </tr>
+                    <tr>
+                        <td><strong>far</strong> (xa)</td>
+                        <td><span class="badge">further / farther</span></td>
+                        <td>Xa hơn (farther dùng cho khoảng cách địa lý; further dùng cho thông tin/khoảng cách trừu tượng)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="quiz-section" data-unit="2">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 2</div>
+                
+                <div class="question-item" data-correct="B" data-exp="'hard' là một trạng từ ngắn đặc biệt, dạng so sánh hơn của nó là 'harder', không sử dụng 'more hard' hay 'hardly'.">
+                    <p class="question-text">Câu 1: To earn a living, the farmers have to work ___________ than city dwellers.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u2q1" value="A"> more hard</label>
+                        <label class="option-label"><input type="radio" name="u2q1" value="B"> harder</label>
+                        <label class="option-label"><input type="radio" name="u2q1" value="C"> more hardly</label>
+                        <label class="option-label"><input type="radio" name="u2q1" value="D"> as hard</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="A" data-exp="Động từ thường 'sing' yêu cầu một trạng từ đi kèm. Dạng so sánh hơn bất quy tắc của trạng từ 'well' là 'better'.">
+                    <p class="question-text">Câu 2: Hoa sings ___________ than Lan, so she won the first prize.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u2q2" value="A"> better</label>
+                        <label class="option-label"><input type="radio" name="u2q2" value="B"> weller</label>
+                        <label class="option-label"><input type="radio" name="u2q2" value="C"> more well</label>
+                        <label class="option-label"><input type="radio" name="u2q2" value="D"> more good</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(2)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(3)">Học tiếp Unit 3 ➔</button>
+                </div>
+                <div class="score-box" id="score-u2"></div>
+            </div>
+        </section>
+
+        <section id="unit-3" class="unit-card">
+            <h2 class="unit-title">Unit 3: Teenagers (Tuổi thiếu niên)</h2>
+            
+            <h3>Phân tích ngữ pháp: Câu đơn và Câu ghép (Simple & Compound Sentences)</h3>
+            
+            <h3>1. Câu đơn (Simple Sentences)</h3>
+            <p>Một câu đơn là câu chỉ chứa <b>một mệnh đề độc lập</b> (independent clause), thể hiện một ý trọn vẹn, gồm đầy đủ chủ ngữ (S) và vị ngữ (V).</p>
+            <div class="example-block">
+                <p>• <u>Minh</u> <u>has some problems with his schoolwork</u>.</p>
+                <p>&nbsp;&nbsp;&nbsp;Chủ ngữ (S) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vị ngữ (V)</p>
+            </div>
+
+            <h3>2. Câu ghép (Compound Sentences)</h3>
+            <p>Một câu ghép bao gồm <b>hai hoặc nhiều mệnh đề độc lập</b> được kết nối với nhau. Có 2 cách để nối các mệnh đề độc lập trong chương trình tiếng Anh lớp 8:</p>
+            
+            <ul>
+                <li>
+                    <strong>Cách 1: Sử dụng liên từ kết hợp (Coordinating Conjunctions)</strong><br>
+                    Các từ nối thông dụng bao gồm: <em>for (vì), and (và), but (nhưng), or (hoặc), so (vì vậy)</em>.<br>
+                    <span class="badge">Quy tắc viết</span> Luôn luôn có <strong>dấu phẩy (,)</strong> đứng trước các liên từ này khi nối hai mệnh đề độc lập.
+                    <div class="example-block">
+                        <p>• Mai bought many books<strong>, for</strong> she likes reading. <em>(for ở đây bằng nghĩa với because)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>Cách 2: Sử dụng trạng từ liên kết (Conjunctive Adverbs)</strong><br>
+                    Các trạng từ liên kết chính: <em>however (tuy nhiên), therefore (vì vậy), otherwise (ngược lại / nếu không thì)</em>.<br>
+                    <span class="badge badge-purple">Quy tắc viết</span> Thường đứng sau <strong>dấu chấm phẩy (;)</strong> và đứng trước <strong>dấu phẩy (,)</strong>.
+                    <div class="formula-box">
+                        Cấu trúc: Mệnh đề 1 ; trạng từ liên kết , Mệnh đề 2
+                    </div>
+                    <div class="example-block">
+                        <p>• Mark is hard-working<strong>; therefore,</strong> he usually gets high scores on exams.</p>
+                        <p>• You must study harder<strong>; otherwise,</strong> you will fail the test.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="quiz-section" data-unit="3">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 3</div>
+                
+                <div class="question-item" data-correct="D" data-exp="Dựa vào cấu trúc dấu câu '; ... ,' ta xác định cần điền một trạng từ liên kết. Xét theo nghĩa của câu (Học bài nếu không thì sẽ trượt), từ phù hợp nhất là 'otherwise'.">
+                    <p class="question-text">Câu 1: Students should focus on their studies; ___________, they might fail the term exams.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u3q1" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="u3q1" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="u3q1" value="C"> however</label>
+                        <label class="option-label"><input type="radio" name="u3q1" value="D"> otherwise</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="B" data-exp="Hai vế thể hiện quan hệ nguyên nhân - kết quả (Trời mưa to -> Vì vậy trận bóng bị hoãn). Phía trước có dấu phẩy đơn, do đó ta dùng liên từ 'so'.">
+                    <p class="question-text">Câu 2: It rained heavily this afternoon, ___________ the football match was cancelled.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u3q2" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="u3q2" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="u3q2" value="C"> therefore</label>
+                        <label class="option-label"><input type="radio" name="u3q2" value="D"> and</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(3)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(4)">Học tiếp Unit 4 ➔</button>
+                </div>
+                <div class="score-box" id="score-u3"></div>
+            </div>
+        </section>
+        <section id="unit-4" class="unit-card">
+            <h2 class="unit-title">Unit 4: Questions (Các cấu trúc câu hỏi trong Tiếng Anh)</h2>
+            
+            <h3>I. Wh-questions (Câu hỏi có từ để hỏi)</h3>
+            <p>Từ để hỏi (Wh-words) bao gồm các từ như <em>who, what, when, where, why,...</em> dùng để thu thập thông tin cụ thể. Tùy thuộc vào thành phần được hỏi, cấu trúc sẽ thay đổi như sau:</p>
+            
+            <ul>
+                <li>
+                    <strong>1. Câu hỏi về chủ ngữ (Subject Questions):</strong><br>
+                    Khi từ để hỏi đóng vai trò là chủ ngữ thực hiện hành động, ta không cần dùng trợ động từ, động từ chính chia trực tiếp sau từ hỏi.
+                    <div class="formula-box">
+                        Cấu trúc: Who / What / Which + V + ...?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Who</strong> lives in that traditional stilt house? <em>(Ai sống trong ngôi nhà sàn truyền thống đó?)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Câu hỏi về tân ngữ (Object Questions):</strong><br>
+                    Khi từ để hỏi đóng vai trò là tân ngữ (chịu tác động của hành động), bắt buộc phải đảo trợ động từ lên trước chủ ngữ.
+                    <div class="formula-box">
+                        Cấu trúc: Whom / What / Which + trợ động từ + S + V (nguyên thể) + ...?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Whom</strong> did you talk to at the communal house yesterday? <em>(Bạn đã nói chuyện với ai ở nhà rông ngày hôm qua?)</em></p>
+                        <p>• <strong>What</strong> did they make for the spring festival? <em>(Họ đã làm cái gì cho lễ hội mùa xuân?)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Câu hỏi cho trạng ngữ / bổ ngữ (Adverbial Questions):</strong><br>
+                    Dùng để hỏi về thời gian, địa điểm, lý do, cách thức, khoảng cách, tần suất...
+                    <div class="formula-box">
+                        Cấu trúc: When / Where / How / Why / ... + trợ động từ + S + V (nguyên thể) + ...?
+                    </div>
+                </li>
+            </ul>
+
+            <p><strong>Bảng tổng hợp các từ hỏi (Wh-words) thông dụng:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Từ hỏi</th>
+                        <th>Chức năng / Mục đích hỏi</th>
+                        <th>Từ hỏi</th>
+                        <th>Chức năng / Mục đích hỏi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>when</strong></td><td>Thời gian</td><td><strong>how far</strong></td><td>Khoảng cách</td></tr>
+                    <tr><td><strong>where</strong></td><td>Địa điểm, nơi chốn</td><td><strong>how often</strong></td><td>Tần suất (bao lâu một lần)</td></tr>
+                    <tr><td><strong>why</strong></td><td>Lý do, nguyên nhân</td><td><strong>how long</strong></td><td>Thời lượng / Độ dài</td></tr>
+                    <tr><td><strong>which</strong></td><td>Sự lựa chọn (giữa số lượng giới hạn)</td><td><strong>how many</strong></td><td>Số lượng (đếm được)</td></tr>
+                    <tr><td><strong>whose</strong></td><td>Sự sở hữu</td><td><strong>how much</strong></td><td>Số lượng (không đếm được) / Giá cả</td></tr>
+                </tbody>
+            </table>
+
+            <h3>II. Cấu trúc câu hỏi Yes/No (Yes/No questions)</h3>
+            <p>Câu hỏi Yes/No luôn bắt đầu bằng một trong những <strong>trợ động từ (be, have, do)</strong> hoặc một <strong>động từ khuyết thiếu (modal verbs)</strong>. Câu trả lời ngắn gọn thường là Yes hoặc No kèm theo trợ động từ tương ứng.</p>
+
+            <ul>
+                <li>
+                    <strong>1. Cấu trúc với động từ "Be":</strong><br>
+                    Dùng để hỏi về danh tính, đặc điểm, trạng thái, vị trí của một người, địa điểm hoặc đồ vật.
+                    <div class="formula-box">
+                        Cấu trúc: Be (Am / Is / Are / Was / Were) + S + Adj / N / Prep?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Is</strong> she an ethnic minority student? ➔ Yes, she is. / No, she isn't.</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Cấu trúc với động từ "Have":</strong><br>
+                    Thường dùng trong các thì hoàn thành (Hiện tại hoàn thành, Quá khứ hoàn thành).
+                    <div class="formula-box">
+                        Cấu trúc: Have / Has / Had + S + V3/Ed (Quá khứ phân từ)?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Have</strong> you ever visited the Northwest mountainous region? ➔ Yes, I have.</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Cấu trúc với động từ "Do":</strong><br>
+                    Dùng để hỏi về những sự thật, thực tế hoặc thói quen ở hiện tại hoặc quá khứ. Động từ chính bắt buộc trả về <strong>nguyên mẫu không "to"</strong>.
+                    <div class="formula-box">
+                        Cấu trúc: Do / Does / Did + S + V (nguyên thể)?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Do</strong> they grow rice on terraced fields? ➔ Yes, they do.</p>
+                        <p>• <strong>Did</strong> you see the folk dance last night? <em>(Động từ 'see' ở dạng nguyên thể)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>4. Cấu trúc với Động từ khuyết thiếu (Modal Verbs):</strong><br>
+                    Dùng để hỏi về khả năng, sự xin phép, lời khuyên, hoặc những việc chưa chắc chắn (can, could, will, should, may,...). Động từ theo sau luôn ở dạng <strong>nguyên thể không "to"</strong>.
+                    <div class="formula-box">
+                        Cấu trúc: Modals (Can/Could/Should/Will...) + S + V (nguyên thể)?
+                    </div>
+                    <div class="example-block">
+                        <p>• <strong>Should</strong> we wear traditional costumes to the festival? ➔ Yes, we should.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="quiz-section" data-unit="4">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 4</div>
+                
+                <div class="question-item" data-correct="B" data-exp="Khi từ để hỏi đóng vai trò làm tân ngữ của câu (bạn muốn hỏi về đối tượng chịu tác động), ta phải dùng trợ động từ đảo lên trước chủ ngữ. Ở quá khứ đơn, ta dùng trợ động từ 'did' + chủ ngữ + động từ nguyên thể 'talk'.">
+                    <p class="question-text">Câu 1: Whom ___________ to at the open-air market last Sunday?</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u4q1" value="A"> you talked</label>
+                        <label class="option-label"><input type="radio" name="u4q1" value="B"> did you talk</label>
+                        <label class="option-label"><input type="radio" name="u4q1" value="C"> did you talked</label>
+                        <label class="option-label"><input type="radio" name="u4q1" value="D"> you did talk</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="C" data-exp="Trong câu hỏi Yes/No sử dụng trợ động từ 'Do/Does/Did', động từ chính theo sau chủ ngữ bắt buộc phải ở dạng nguyên thể không 'to' (infinitive). Do đó 'know' là đáp án đúng.">
+                    <p class="question-text">Câu 2: Does your friend ___________ how to weave clothing items?</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u4q2" value="A"> knows</label>
+                        <label class="option-label"><input type="radio" name="u4q2" value="B"> to know</label>
+                        <label class="option-label"><input type="radio" name="u4q2" value="C"> know</label>
+                        <label class="option-label"><input type="radio" name="u4q2" value="D"> knowing</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(4)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(5)">Học tiếp Unit 5 ➔</button>
+                </div>
+                <div class="score-box" id="score-u4"></div>
+            </div>
+        </section>
+        <section id="unit-5" class="unit-card">
+            <h2 class="unit-title">Unit 5: Our customs and traditions (Phong tục và truyền thống của chúng ta)</h2>
+            
+            <h3>Ngữ pháp chuyên sâu: Zero Article (Không dùng mạo từ Ø)</h3>
+            <p>Trong tiếng Anh, bên cạnh việc sử dụng các mạo từ xác định <strong>"the"</strong> hoặc mạo từ bất định <strong>"a/an"</strong>, có những trường hợp chúng ta hoàn toàn không đặt mạo từ trước danh từ. Trường hợp này được gọi là <strong>Zero Article (Mạo từ trống / Không dùng mạo từ)</strong>.</p>
+            
+            <p>Dưới đây là 3 trường hợp không dùng mạo từ cốt lõi trong chương trình lớp 8 và các lưu ý mở rộng:</p>
+
+            <ul>
+                <li>
+                    <strong>1. Đi với danh từ không đếm được hoặc danh từ trừu tượng:</strong><br>
+                    Các danh từ chỉ chất liệu, chất lỏng, thức ăn (ở dạng tổng quát) hoặc các khái niệm trừu tượng (văn hóa, tình yêu, thời gian...) sẽ không đi với mạo từ.
+                    <div class="example-block">
+                        <p>• <strong>Ø Sugar</strong> is not good for your teeth. <em>(Đường không tốt cho răng của bạn - nói chung về chất đường.)</em></p>
+                        <p>• We should preserve <strong>Ø tradition</strong>. <em>(Chúng ta nên bảo tồn truyền thống - danh từ trừu tượng.)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Khi đưa ra nhận định, phát biểu chung chung:</strong><br>
+                    Khi ta muốn nói về một loài, một nhóm đối tượng hoặc một giai cấp nói chung ở dạng số nhiều, ta để trống mạo từ.
+                    <div class="example-block">
+                        <p>• <strong>Ø Students</strong> should work hard. <em>(Học sinh nên chăm chỉ - chỉ toàn bộ học sinh nói chung.)</em></p>
+                    </div>
+                    <div class="note-box">
+                        <strong>⚠️ Bẫy phân biệt cần lưu ý:</strong> 
+                        <br>• Nếu nói: <em>"<strong>Ø Apples</strong> are good for health."</em> -> Không dùng mạo từ vì nói chung về quả táo.
+                        <br>• Nhưng nếu nói: <em>"<strong>The apples</strong> on the table are sweet."</em> -> Phải dùng <strong>the</strong> vì đây là những quả táo cụ thể (ở trên bàn), không còn là nhận định chung nữa.
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Khi miêu tả các phương tiện giao thông đi với giới từ "by":</strong><br>
+                    Cấu trúc <strong>"by + phương tiện"</strong> dùng để chỉ cách thức di chuyển nói chung tuyệt đối không có mạo từ xen vào giữa.
+                    <div class="formula-box">
+                        Cấu trúc cố định: by car, by bus, by train, by boat, by plane...
+                    </div>
+                    <div class="example-block">
+                        <p>• We went home <strong>by Ø boat</strong>. <em>(Chúng tôi về nhà bằng thuyền.)</em></p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="quiz-section" data-unit="5">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 5</div>
+                
+                <div class="question-item" data-correct="D" data-exp="Trong cấu trúc chỉ phương tiện giao thông đi với giới từ 'by' (by bus, by car, by plane...), chúng ta áp dụng quy tắc Zero Article (không dùng mạo từ). Do đó chọn ký hiệu Ø.">
+                    <p class="question-text">Câu 1: According to tradition, the villagers always travel to the festival ___________ boat.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u5q1" value="A"> a</label>
+                        <label class="option-label"><input type="radio" name="u5q1" value="B"> an</label>
+                        <label class="option-label"><input type="radio" name="u5q1" value="C"> the</label>
+                        <label class="option-label"><input type="radio" name="u5q1" value="D"> Ø (No article)</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="D" data-exp="'Tea' (Trà) ở đây là một danh từ không đếm được và câu này đang đưa ra một nhận định chung chung về văn hóa uống trà của người Việt, không chỉ định gói trà cụ thể nào, nên ta dùng Zero Article (Ø).">
+                    <p class="question-text">Câu 2: ___________ tea is a very popular drink among Vietnamese people.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u5q2" value="A"> A</label>
+                        <label class="option-label"><input type="radio" name="u5q2" value="B"> An</label>
+                        <label class="option-label"><input type="radio" name="u5q2" value="C"> The</label>
+                        <label class="option-label"><input type="radio" name="u5q2" value="D"> Ø (No article)</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(5)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(6)">Học tiếp Unit 6 ➔</button>
+                </div>
+                <div class="score-box" id="score-u5"></div>
+            </div>
+        </section>
+        <section id="unit-6" class="unit-card">
+            <h2 class="unit-title">Unit 6: Lifestyles (Phong cách sống)</h2>
+            
+            <h3>I. The Future Simple (Thì tương lai đơn)</h3>
+            <p>Trong chủ đề Lifestyles, thì tương lai đơn thường được dùng để dự đoán về sự thay đổi lối sống, miêu tả những khả năng hoặc kết quả mang tính điều kiện trong tương lai.</p>
+            
+            <div class="formula-box">
+                Cấu trúc khẳng định: S + will + V (nguyên thể)<br>
+                Cấu trúc phủ định: S + will not (won't) + V (nguyên thể)
+            </div>
+
+            <p><strong>Cách dùng trọng tâm trong chương trình:</strong></p>
+            <ul>
+                <li>Diễn đạt một khả năng, một kết quả tất yếu sẽ xảy ra dựa trên một tình huống hiện tại.</li>
+                <li>Dùng trong mệnh đề kết quả của câu điều kiện hoặc sau các liên từ lựa chọn như <em>"or" (nếu không thì)</em>.</li>
+            </ul>
+
+            <div class="example-block">
+                <p>• We have to leave now, or we <strong>will miss</strong> the train. <em>(Chúng tôi phải rời đi bây giờ, hoặc chúng tôi sẽ lỡ chuyến tàu hỏa.)</em></p>
+                <p>• If I fail the test, I <strong>will have to</strong> take the course again. <em>(Nếu tớ trượt bài kiểm tra, tớ sẽ phải học lại khóa này.)</em></p>
+            </div>
+
+            <h3>II. First Conditional (Câu điều kiện loại 1)</h3>
+            <p>Câu điều kiện loại 1 dùng để diễn tả một sự việc, hiện tượng hoặc điều kiện <strong>có thật và hoàn toàn có thể xảy ra</strong> ở hiện tại hoặc tương lai nếu điều kiện ở mệnh đề IF được đáp ứng.</p>
+
+            <div class="formula-box">
+                Cấu trúc: If + S + V (hiện tại đơn), S + will + V (nguyên thể)
+            </div>
+
+            <div class="note-box">
+                <strong>⚠️ Bẫy chia thì cần nhớ:</strong> 
+                <br>• Mệnh đề chứa <strong>IF</strong> luôn chia ở <strong>Thì hiện tại đơn</strong> (Không được dùng will ở đây).
+                <br>• Mệnh đề chính (Mệnh đề kết quả) mới chia ở <strong>Thì tương lai đơn</strong> (S + will + V).
+                <br>• Nếu mệnh đề IF đứng đầu thì giữa hai mệnh đề phải có <strong>dấu phẩy (,)</strong>. Nếu mệnh đề IF đứng sau thì không cần dấu phẩy.
+            </div>
+
+            <h3>III. Cấu trúc nâng cao với "Unless" (Trừ khi / Nếu... không)</h3>
+            <p>Chúng ta có thể sử dụng <strong>"Unless"</strong> để thay thế cho cụm <strong>"If... not"</strong> trong câu điều kiện loại 1. Bản chất trong từ "Unless" đã mang nghĩa phủ định.</p>
+            
+            <div class="formula-box">
+                Quy tắc đổi: Unless + S + V (thể khẳng định) = If + S + V (thể phủ định)
+            </div>
+
+            <div class="example-block">
+                <p>• You will fail the test <strong>unless</strong> you study hard.</p>
+                <p>➔ You will fail the test <strong>if</strong> you <strong>don't</strong> study hard. <em>(Bạn sẽ thi trượt nếu bạn không học hành chăm chỉ.)</em></p>
+            </div>
+
+            <div class="note-box">
+                <strong>💡 Lưu ý khi viết lại câu:</strong> Vì bản thân <strong>Unless</strong> đã bằng <strong>If... not</strong>, nên mệnh đề đi ngay sau Unless luôn ở dạng <strong>khẳng định</strong>, tuyệt đối không chia phủ định (ví dụ không dùng: <s>unless you don't study</s>).
+            </div>
+
+            <div class="quiz-section" data-unit="6">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 6</div>
+                
+                <div class="question-item" data-correct="A" data-exp="Đây là câu điều kiện loại 1. Mệnh đề chính đã có 'will start', do đó mệnh đề chứa IF phải chia ở thì hiện tại đơn. Với chủ ngữ số ít 'the weather', động từ 'be' tương ứng là 'is'.">
+                    <p class="question-text">Câu 1: If the weather ___________ good tomorrow, we will start our eco-friendly lifestyle project.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u6q1" value="A"> is</label>
+                        <label class="option-label"><input type="radio" name="u6q1" value="B"> will be</label>
+                        <label class="option-label"><input type="radio" name="u6q1" value="C"> be</label>
+                        <label class="option-label"><input type="radio" name="u6q1" value="D"> was</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="C" data-exp="Câu gốc mang nghĩa: 'Nếu bạn không cắt giảm đồ ăn nhanh, bạn sẽ tăng cân'. Ta có cấu trúc 'Unless' = 'If... not'. Khi dùng 'Unless', mệnh đề phía sau phải chuyển về dạng khẳng định: 'Unless you cut down on...' nên chọn 'cut'.">
+                    <p class="question-text">Câu 2: You will gain weight if you don't cut down on fast food. <br>➔ You will gain weight ___________ you ___________ down on fast food.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u6q2" value="A"> if / cut</label>
+                        <label class="option-label"><input type="radio" name="u6q2" value="B"> unless / don't cut</label>
+                        <label class="option-label"><input type="radio" name="u6q2" value="C"> unless / cut</label>
+                        <label class="option-label"><input type="radio" name="u6q2" value="D"> if / don't cut</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(6)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(7)">Học tiếp Unit 7 ➔</button>
+                </div>
+                <div class="score-box" id="score-u6"></div>
+            </div>
+        </section>
+        <section id="unit-7" class="unit-card">
+            <h2 class="unit-title">Unit 7: Environmental protection (Bảo vệ môi trường)</h2>
+            
+            <h3>Ngữ pháp chuyên sâu: Câu phức với mệnh đề trạng ngữ chỉ thời gian (Complex Sentences with Adverb Clauses of Time)</h3>
+            <p>Trong chủ đề bảo vệ môi trường, chúng ta thường sử dụng câu phức để diễn tả chuỗi các hành động, giải pháp hoặc sự kiện xảy ra theo các mốc thời gian cụ thể.</p>
+            
+            <h3>1. Định nghĩa về Câu phức (Complex Sentences)</h3>
+            <p>Một câu phức luôn chứa <strong>một mệnh đề độc lập</strong> (Independent Clause) và <strong>ít nhất một mệnh đề phụ thuộc</strong> (Dependent Clause).</p>
+            <ul>
+                <li><strong>Mệnh đề độc lập:</strong> Là mệnh đề diễn đạt một ý trọn vẹn, khi đứng một mình nó vẫn có nghĩa hoàn chỉnh.</li>
+                <li><strong>Mệnh đề phụ thuộc:</strong> Là mệnh đề không thể đứng một mình vì ý nghĩa chưa trọn vẹn. Nó thường được bắt đầu bằng một liên từ phụ thuộc hoặc trạng từ chỉ thời gian.</li>
+            </ul>
+
+            <div class="example-block">
+                <p>• <u>The roads were slippery</u> <u>when it rained</u>.</p>
+                <p>&nbsp;&nbsp;&nbsp;➔ Mệnh đề độc lập: <em>The roads were slippery (Đường sá rất trơn trượt)</em></p>
+                <p>&nbsp;&nbsp;&nbsp;➔ Mệnh đề phụ thuộc: <em>when it rained (khi trời mưa)</em></p>
+            </div>
+
+            <h3>2. Mệnh đề trạng ngữ chỉ thời gian (Adverb Clauses of Time)</h3>
+            <p>Mệnh đề trạng ngữ chỉ thời gian chính là một loại mệnh đề phụ thuộc, dùng để làm rõ thời điểm mà hành động trong mệnh đề chính xảy ra. Mệnh đề này được bắt đầu bằng các liên từ chỉ thời gian phổ biến sau:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Liên từ</th>
+                        <th>Ý nghĩa</th>
+                        <th>Ví dụ thực tế</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>when</strong></td>
+                        <td>khi / vào lúc</td>
+                        <td>We should turn off the lights <strong>when</strong> we leave the room.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>while</strong></td>
+                        <td>trong khi (hành động song song)</td>
+                        <td>He was collecting litter <strong>while</strong> his friends were planting trees.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>before</strong></td>
+                        <td>trước khi</td>
+                        <td>Check your bicycle <strong>before</strong> you ride it to school.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>after</strong></td>
+                        <td>sau khi</td>
+                        <td><strong>After</strong> we clean up the beach, we will group the waste for recycling.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>as soon as</strong></td>
+                        <td>ngay khi (hành động nối tiếp tức thì)</td>
+                        <td><strong>As soon as</strong> they arrive, we'll start the environmental campaign.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>till / until</strong></td>
+                        <td>cho đến khi</td>
+                        <td>We will modernise our lifestyle <strong>until</strong> our carbon footprint drops.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note-box">
+                <strong>⚠️ Quy tắc dấu câu bắt buộc phải nhớ (Bẫy bài tập viết lại câu):</strong> 
+                <br>• Nếu <strong>Mệnh đề phụ thuộc</strong> (chứa liên từ: <em>when, as soon as, after...</em>) đứng ở <strong>đầu câu</strong> ➔ Bắt buộc phải có <strong>dấu phẩy (,)</strong> ngăn cách giữa 2 mệnh đề.
+                <br>• Nếu <strong>Mệnh đề độc lập</strong> (mệnh đề chính) đứng ở <strong>đầu câu</strong> ➔ <strong>KHÔNG</strong> sử dụng dấu phẩy ở giữa.
+            </div>
+
+            <div class="quiz-section" data-unit="7">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 7</div>
+                
+                <div class="question-item" data-correct="D" data-exp="Dựa vào quy tắc dấu câu: Mệnh đề phụ thuộc chứa liên từ chỉ thời gian đứng ở đầu câu, do đó ta cần một dấu phẩy (,) đặt ở giữa để ngăn cách hai mệnh đề độc lập và phụ thuộc.">
+                    <p class="question-text">Câu 1: Chọn câu viết đúng quy tắc dấu câu trong các câu dưới đây:</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u7q1" value="A"> As soon as the rain stops we will go out to plant trees.</label>
+                        <label class="option-label"><input type="radio" name="u7q1" value="B"> We will go out to plant trees, as soon as the rain stops.</label>
+                        <label class="option-label"><input type="radio" name="u7q1" value="C"> As soon as the rain stops; we will go out to plant trees.</label>
+                        <label class="option-label"><input type="radio" name="u7q1" value="D"> As soon as the rain stops, we will go out to plant trees.</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="A" data-exp="'As soon as' có nghĩa là 'ngay khi', diễn tả một hành động xảy ra liền ngay sau một hành động khác (Ngay khi họ đến, chúng tôi sẽ ăn trưa). Các liên từ khác không hợp logic ngữ nghĩa câu này.">
+                    <p class="question-text">Câu 2: ___________ they arrive, we’ll have lunch.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u7q2" value="A"> As soon as</label>
+                        <label class="option-label"><input type="radio" name="u7q2" value="B"> Until</label>
+                        <label class="option-label"><input type="radio" name="u7q2" value="C"> Before</label>
+                        <label class="option-label"><input type="radio" name="u7q2" value="D"> While</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(7)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(8)">Học tiếp Unit 8 ➔</button>
+                </div>
+                <div class="score-box" id="score-u7"></div>
+            </div>
+        </section>
+        <section id="unit-8" class="unit-card">
+            <h2 class="unit-title">Unit 8: Shopping (Mua sắm)</h2>
+            
+            <h3>I. Adverbs of frequency (Trạng từ chỉ tần suất)</h3>
+            <p>Trong chủ đề Shopping, trạng từ tần suất được dùng để mô tả mức độ thường xuyên đi mua sắm, ghé thăm các cửa hàng hoặc sử dụng các dịch vụ tiện ích.</p>
+            
+            <p><strong>Thang đo mức độ tần suất phổ biến:</strong></p>
+            <ul>
+                <li><strong>Always (100%):</strong> Luôn luôn</li>
+                <li><strong>Usually (90%):</strong> Thường xuyên</li>
+                <li><strong>Generally / Normally (80%):</strong> Thông thường</li>
+                <li><strong>Often (70%):</strong> Thường</li>
+                <li><strong>Sometimes (50%):</strong> Thỉnh thoảng</li>
+                <li><strong>Hardly ever / Rarely (10%):</strong> Hiếm khi</li>
+                <li><strong>Never (0%):</strong> Không bao giờ</li>
+            </ul>
+
+            <h3>Vị trí của Trạng từ tần suất trong câu (Bẫy sắp xếp từ)</h3>
+            
+            <ul>
+                <li>
+                    <strong>1. Đứng trước động từ thường:</strong><br>
+                    Trạng từ tần suất luôn đứng trước động từ chính trong cả câu khẳng định, phủ định và nghi vấn.
+                    <div class="formula-box">
+                        (+) S + adv + V<br>
+                        (-) S + don’t / doesn’t + adv + V<br>
+                        (?) Do / Does + S + adv + V...?
+                    </div>
+                    <div class="example-block">
+                        <p>• My sister <strong>usually writes</strong> to me because she’s homesick. <em>(Chị gái thường xuyên viết thư cho tôi.)</em></p>
+                        <p>• My parents <strong>usually remind</strong> us to do homework early.</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Đứng sau động từ To Be:</strong><br>
+                    Trong tất cả các dạng câu, trạng từ tần suất phải đứng ngay sau động từ to be.
+                    <div class="formula-box">
+                        (+) S + am / is / are + adv + ...<br>
+                        (-) S + am / is / are not + adv + ...<br>
+                        (?) Am / Is / Are + S + adv + ...?
+                    </div>
+                    <div class="example-block">
+                        <p>• They <strong>are always</strong> slower than other teams. <em>(Họ luôn luôn chậm hơn các đội khác.)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>3. Đứng sau trợ động từ (Auxiliary Verbs):</strong><br>
+                    Nếu câu có trợ động từ hoặc động từ khuyết thiếu, trạng từ đứng giữa trợ động từ và động từ chính.
+                    <div class="example-block">
+                        <p>• I have <strong>never</strong> been abroad. <em>(Tôi chưa bao giờ ra nước ngoài.)</em></p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="note-box">
+                <strong>💡 Lưu ý mở rộng về vị trí:</strong> Hầu hết các trạng từ tần suất (như <em>usually, sometimes, normally</em>) đều có thể đứng đầu câu hoặc cuối câu để nhấn mạnh hành động. 
+                <br>➔ <strong>Ngoại lệ cấm:</strong> Các từ <strong>always, hardly, ever, never</strong> TUYỆT ĐỐI không được đứng đầu câu hoặc cuối câu.
+                <br>• <em>Ví dụ đúng:</em> <strong>Sometimes</strong>, my husband and I go to the beach on the weekend.
+            </div>
+
+            <h3>II. Thì hiện tại đơn chỉ sự việc tương lai (Present simple for future)</h3>
+            <p>Chúng ta sử dụng thì hiện tại đơn nhưng mang ý nghĩa tương lai khi nói về <strong>thời khóa biểu, lịch trình tàu xe, máy bay, chương trình sự kiện công cộng</strong> hoặc lịch cố định đã được lên kế hoạch sẵn bởi ban tổ chức.</p>
+            
+            <div class="example-block">
+                <p>• I have to go now. My art lesson <strong>starts</strong> at one o’clock. <em>(Lớp học vẽ của tớ bắt đầu lúc 1 giờ - Lịch trình cố định.)</em></p>
+                <p>• The train <strong>leaves</strong> at 4:30, so we still have a lot of time. <em>(Tàu rời ga lúc 4:30 - Lịch tàu xe.)</em></p>
+            </div>
+
+            <div class="quiz-section" data-unit="8">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 8</div>
+                
+                <div class="question-item" data-correct="C" data-exp="Trạng từ tần suất 'often' có quy tắc đứng SAU động từ to be ('is') và đứng TRƯỚC động từ thường. Do đó cấu trúc 'is often' mới là đáp án đúng chính tả ngữ pháp.">
+                    <p class="question-text">Câu 1: That clothing store ___________ crowded during the weekend sale.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u8q1" value="A"> often is</label>
+                        <label class="option-label"><input type="radio" name="u8q1" value="B"> is crowded often</label>
+                        <label class="option-label"><input type="radio" name="u8q1" value="C"> is often</label>
+                        <label class="option-label"><input type="radio" name="u8q1" value="D"> often crowded is</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="B" data-exp="Lịch trình của trung tâm thương mại mở cửa lúc 9:00 sáng là một thời gian biểu cố định công cộng. Đối với lịch trình cố định trong tương lai, ta bắt buộc sử dụng thì hiện tại đơn. Vì 'The new shopping mall' là chủ ngữ số ít, động từ 'open' thêm 's'.">
+                    <p class="question-text">Câu 2: Look at the schedule! The new shopping mall ___________ at 9:00 AM tomorrow.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u8q2" value="A"> will open</label>
+                        <label class="option-label"><input type="radio" name="u8q2" value="B"> opens</label>
+                        <label class="option-label"><input type="radio" name="u8q2" value="C"> is opening</label>
+                        <label class="option-label"><input type="radio" name="u8q2" value="D"> opened</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(8)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(9)">Học tiếp Unit 9 ➔</button>
+                </div>
+                <div class="score-box" id="score-u8"></div>
+            </div>
+        </section>
+
+        <section id="unit-9" class="unit-card">
+            <h2 class="unit-title">Unit 9: Natural disasters (Thiên tai)</h2>
+            
+            <h3>I. Cấu trúc Thì quá khứ tiếp diễn (The Past Continuous)</h3>
+            <p>Thì quá khứ tiếp diễn dùng để nhấn mạnh quá trình của một hành động hoặc sự việc diễn ra xung quanh một thời điểm trong quá khứ.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thể câu</th>
+                        <th>Cấu trúc ngữ pháp</th>
+                        <th>Ví dụ thực tế</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Khẳng định (+)</strong></td>
+                        <td>S + was / were + V-ing</td>
+                        <td>I <strong>was having</strong> dinner at 6 p.m. yesterday.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phủ định (-)</strong></td>
+                        <td>S + was / were + not + V-ing</td>
+                        <td>They <strong>were not (weren't) watching</strong> TV at that time.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nghi vấn (?)</strong></td>
+                        <td>Was / Were + S + V-ing...?</td>
+                        <td><strong>Were</strong> you <strong>having</strong> dinner at 6 p.m. yesterday?</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note-box">
+                <strong>💡 Quy tắc chia Was / Were:</strong> 
+                <br>• <strong>Was:</strong> Đi với chủ ngữ số ít (<em>I, He, She, It, Danh từ số ít</em>).
+                <br>• <strong>Were:</strong> Đi với chủ ngữ số nhiều (<em>You, We, They, Danh từ số nhiều</em>).
+            </div>
+
+            <h3>II. Cách sử dụng trọng tâm</h3>
+            <p>Trong chủ đề thiên tai, thì quá khứ tiếp diễn được áp dụng vào 2 ngữ cảnh cốt lõi sau:</p>
+            
+            <ul>
+                <li>
+                    <strong>1. Diễn tả một hành động đang xảy ra tại một thời điểm cụ thể trong quá khứ:</strong><br>
+                    Thời điểm này thường được chỉ rõ bằng các mốc giờ giấc chính xác.
+                    <div class="example-block">
+                        <p>• At 8 o'clock last night, the rescue team <strong>was searching</strong> for survivors. <em>(Vào lúc 8 giờ tối qua, đội cứu hộ đang tìm kiếm những người sống sót.)</em></p>
+                    </div>
+                </li>
+                <li>
+                    <strong>2. Diễn tả một hành động đang diễn ra thì có một hành động khác chen ngang, làm gián đoạn:</strong><br>
+                    • Hành động <b>đang diễn ra</b> (kéo dài) ➔ Chia thì <strong>Quá khứ tiếp diễn (Was/Were + V-ing)</strong>.
+                    <br>• Hành động <b>chen ngang</b> (đột ngột, ngắn) ➔ Chia thì <strong>Quá khứ đơn (V2/ed)</strong>.
+                    <div class="example-block">
+                        <p>• When / While we <strong>were watching</strong> TV, we <strong>felt</strong> the earthquake. <em>(Khi chúng tôi đang xem TV thì chúng tôi cảm nhận được trận động đất.)</em></p>
+                        <p>• What <strong>were they doing</strong> when they <strong>felt</strong> the earthquake? ➔ They <strong>were watching</strong> TV.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>⚠️ Chú ý quan trọng về cách dùng liên từ WHEN và WHILE</h3>
+            <p>Học sinh rất dễ bị bẫy vị trí của hai liên từ này trong bài tập điền từ hoặc viết lại câu:</p>
+            <div class="formula-box">
+                • Cách dùng 1: <strong>While / When</strong> + S + was/were + V-ing (Quá khứ tiếp diễn), S + V2/ed (Quá khứ đơn).<br>
+                • Cách dùng 2: <strong>When</strong> + S + V2/ed (Quá khứ đơn), S + was/were + V-ing (Quá khứ tiếp diễn).
+            </div>
+            <div class="note-box">
+                <strong>⚡ Nguyên tắc cốt lõi:</strong> 
+                <br>• Chúng ta có thể sử dụng cả <strong>when</strong> hoặc <strong>while</strong> trước thì quá khứ tiếp diễn (hành động kéo dài).
+                <br>• Chúng ta <strong>CHỈ</strong> được sử dụng <strong>when</strong> trước thì quá khứ đơn (hành động chen ngang đột ngột), tuyệt đối không dùng <s>while + quá khứ đơn</s>.
+            </div>
+
+            <div class="quiz-section" data-unit="9">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 9</div>
+                
+                <div class="question-item" data-correct="B" data-exp="Câu có mốc thời gian cụ thể trong quá khứ 'at this time yesterday' (vào giờ này ngày hôm qua), hành động đang trong quá trình diễn ra nên ta chia thì quá khứ tiếp diễn. Với chủ ngữ số nhiều 'We', ta chọn 'were evacuation drilling'.">
+                    <p class="question-text">Câu 1: At this time yesterday, we ___________ an evacuation drill for disasters.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u9q1" value="A"> are doing</label>
+                        <label class="option-label"><input type="radio" name="u9q1" value="B"> were doing</label>
+                        <label class="option-label"><input type="radio" name="u9q1" value="C"> did</label>
+                        <label class="option-label"><input type="radio" name="u9q1" value="D"> was doing</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="A" data-exp="Mối quan hệ giữa hai hành động: Hành động 'đang làm bài tập' đang diễn ra liên tục (chia quá khứ tiếp diễn) thì hành động 'bão đổ bộ' đột ngột chen ngang (chia quá khứ đơn 'struck'). Phía trước động từ chia quá khứ đơn, ta chỉ được phép dùng liên từ 'When'.">
+                    <p class="question-text">Câu 2: I was doing my homework ___________ the severe storm struck the village.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u9q2" value="A"> when</label>
+                        <label class="option-label"><input type="radio" name="u9q2" value="B"> while</label>
+                        <label class="option-label"><input type="radio" name="u9q2" value="C"> until</label>
+                        <label class="option-label"><input type="radio" name="u9q2" value="D"> as soon as</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(9)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(10)">Học tiếp Unit 10 ➔</button>
+                </div>
+                <div class="score-box" id="score-u9"></div>
+            </div>
+        </section>
+
+        <section id="unit-10" class="unit-card">
+            <h2 class="unit-title">Unit 10: Communication (Giao tiếp)</h2>
+            
+            <h3>I. Prepositions of Place and Time (Giới từ chỉ địa điểm và thời gian)</h3>
+            
+            <h3>1. Prepositions of Place (Giới từ chỉ địa điểm)</h3>
+            <p>Trong giao tiếp, việc xác định vị trí của đối tượng hoặc nơi diễn ra cuộc hội thoại là rất quan trọng. Hãy phân biệt ba giới từ cốt lõi <strong>IN - ON - AT</strong> theo mức độ thu hẹp dần của không gian:</p>
+            
+            <ul>
+                <li>
+                    <strong>1.1. IN (Trong):</strong> Dùng cho không gian lớn, địa danh (đất nước, thành phố) hoặc vị trí nằm bên trong một khu vực được bao quanh.
+                    <div class="example-block">
+                        <p>• <strong>Địa danh:</strong> in Hanoi, in Viet Nam, in London...</p>
+                        <p>• <strong>Không gian bao quanh:</strong> in a country, in a town, in a forest, in a building, in a garden, in a box.</p>
+                        <p>• <em>Ví dụ:</em> My grandfather is watering the tree <strong>in a garden</strong>.</p>
+                        <p>• <em>Ví dụ:</em> I got stuck <strong>in a traffic jam</strong> for half an hour.</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>1.2. ON (Trên):</strong> Miêu tả sự vật nằm ngay trên bề mặt của một vật thể khác hoặc một không gian mở.
+                    <div class="example-block">
+                        <p>• <strong>Cụm từ thông dụng:</strong> on the floor, on the table, on the wall, on the ceiling, on the page, on a farm, on the street, on the beach.</p>
+                        <p>• <em>Ví dụ:</em> They live in that old house <strong>on the hill</strong>.</p>
+                        <p>• <em>Ví dụ:</em> Have you ever gone <strong>on the beach</strong>?</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>1.3. AT (Ở tại):</strong> Dùng để chỉ một vị trí chính xác, một điểm dừng hoặc một địa chỉ cụ thể.
+                    <div class="example-block">
+                        <p>• <strong>Địa chỉ cụ thể:</strong> <strong>at</strong> 169 Tran Hung Dao, Ha Noi.</p>
+                        <p>• <strong>Vị trí chính xác:</strong> at the table in the corner, at the top of the stairs.</p>
+                        <p>• <strong>Cụm cố định chỉ nơi chốn:</strong> at home, at work, at the office, at school, at university, at the door, at the bus stop.</p>
+                    </div>
+                </li>
+                <li>
+                    <strong>1.4. Các giới từ chỉ vị trí khác:</strong>
+                    <br>• <strong>in front of (phía trước):</strong> There is a pond <em>in front of</em> the house.
+                    <br>• <strong>opposite (đối diện):</strong> The cinema is <em>opposite</em> the bakery.
+                    <br>• <strong>under (bên dưới):</strong> The school bag is <em>under</em> the table.
+                </li>
+            </ul>
+
+            <h3>2. Prepositions of Time (Giới từ chỉ thời gian nâng cao)</h3>
+            <p>Bên cạnh các giới từ cơ bản, hãy chú ý đến cấu trúc và ngữ nghĩa đặc biệt của 3 giới từ thời gian sau:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Giới từ</th>
+                        <th>Cách dùng / Ý nghĩa</th>
+                        <th>Ví dụ thực tế</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>in + khoảng thời gian</strong></td>
+                        <td>Thể hiện nghĩa tương lai (sau bao lâu nữa)</td>
+                        <td>Robots will replace human shop assistants <strong>in ten years</strong>. <em>(trong 10 năm nữa)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>for + khoảng thời gian</strong></td>
+                        <td>Thể hiện sự việc kéo dài trong bao lâu</td>
+                        <td>It rained <strong>for three hours</strong> yesterday. <em>(suốt 3 tiếng đồng hồ)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>by + mốc thời gian</strong></td>
+                        <td>Trước thời điểm đó (hành động hoàn thành trước)</td>
+                        <td>We’ll be there <strong>by 6 p.m.</strong> <em>(trước hoặc chậm nhất là lúc 6 giờ tối)</em></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>II. Possessive Pronouns (Đại từ sở hữu)</h3>
+            <p>Đại từ sở hữu dùng để chỉ quyền sở hữu một vật/người nào đó, giúp câu văn ngắn gọn, trôi chảy và <strong>tránh trùng lặp từ</strong>.</p>
+            
+            <div class="formula-box">
+                Công thức cốt lõi: Đại từ sở hữu = Tính từ sở hữu + Danh từ đã đề cập trước đó.
+            </div>
+
+            <p><strong>Bảng chuyển đổi từ Tính từ sở hữu sang Đại từ sở hữu:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chủ ngữ (S)</th>
+                        <th>Tính từ sở hữu (+ Noun)</th>
+                        <th>Đại từ sở hữu (Đứng độc lập)</th>
+                        <th>Ý nghĩa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>I</td><td>my (book)</td><td><strong>mine</strong></td><td>của tôi</td></tr>
+                    <tr><td>You</td><td>your (book)</td><td><strong>yours</strong></td><td>của bạn / các bạn</td></tr>
+                    <tr><td>We</td><td>our (book)</td><td><strong>ours</strong></td><td>của chúng tôi</td></tr>
+                    <tr><td>They</td><td>their (book)</td><td><strong>theirs</strong></td><td>của họ</td></tr>
+                    <tr><td>He</td><td>his (book)</td><td><strong>his</strong></td><td>của anh ấy</td></tr>
+                    <tr><td>She</td><td>her (book)</td><td><strong>hers</strong></td><td>của cô ấy</td></tr>
+                    <tr><td>It</td><td>its (tail)</td><td><strong>its</strong></td><td>của nó</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Vị trí và Lưu ý đặc biệt khi làm bài tập:</h3>
+            <ul>
+                <li><strong>Làm Chủ ngữ:</strong> His car is red and <strong>mine</strong> is blue. <em>(mine = my car)</em></li>
+                <li><strong>Làm Tân ngữ:</strong> Her house is bigger than <strong>mine</strong>. <em>(mine = my house)</em></li>
+                <li><strong>Đứng sau giới từ:</strong> I don’t know what to do with <strong>mine</strong>.</li>
+            </ul>
+            
+            <div class="note-box">
+                <strong>⚠️ 2 Bẫy ngữ pháp cực nặng:</strong>
+                <br>1. Đại từ sở hữu <strong>không bao giờ</strong> đứng trước một danh từ (Không viết: <s>This is hers book</s>).
+                <br>2. Đại từ sở hữu và tính từ sở hữu của <strong>he (his)</strong> và <strong>it (its)</strong> có hình thức viết <strong>y hệt nhau</strong>. Hãy dựa vào ngữ cảnh câu xem phía sau có danh từ hay không để xác định loại từ.
+            </div>
+
+            <div class="quiz-section" data-unit="10">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 10</div>
+                
+                <div class="question-item" data-correct="B" data-exp="Phía trước ta thấy đã xuất hiện cụm danh từ 'your smartphone' (điện thoại của bạn). Ở vế sau, câu mang nghĩa 'điện thoại của tôi'. Để tránh lặp lại từ 'smartphone', ta dùng đại từ sở hữu 'mine' làm chủ ngữ cho vế sau.">
+                    <p class="question-text">Câu 1: Your smartphone is on the table, but ___________ is still in the school bag.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u10q1" value="A"> my</label>
+                        <label class="option-label"><input type="radio" name="u10q1" value="B"> mine</label>
+                        <label class="option-label"><input type="radio" name="u10q1" value="C"> me</label>
+                        <label class="option-label"><input type="radio" name="u10q1" value="D"> I</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="C" data-exp="Ở đây câu diễn tả một hành động sẽ hoàn thành trước hoặc muộn nhất tại một mốc thời gian cụ thể trong tương lai ('6 p.m.'). Giới từ phù hợp mang nghĩa 'trước thời điểm đó' là 'by'.">
+                    <p class="question-text">Câu 2: Don't worry about the online meeting! We will be connected to the system ___________ 6 p.m.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u10q2" value="A"> in</label>
+                        <label class="option-label"><input type="radio" name="u10q2" value="B"> for</label>
+                        <label class="option-label"><input type="radio" name="u10q2" value="C"> by</label>
+                        <label class="option-label"><input type="radio" name="u10q2" value="D"> on</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(10)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(11)">Học tiếp Unit 11 ➔</button>
+                </div>
+                <div class="score-box" id="score-u10"></div>
+            </div>
+        </section>
+        <section id="unit-11" class="unit-card">
+            <h2 class="unit-title">Unit 11: Science and technology (Khoa học và công nghệ)</h2>
+            
+            <h3>Ngữ pháp chuyên sâu: Câu tường thuật dạng trần thuật (Reported Speech - Statements)</h3>
+            <p>Câu tường thuật (hoặc câu gián tiếp) được sử dụng để kể lại, thuật lại lời nói của một người khác mà không cần lặp lại nguyên văn từ ngữ của họ.</p>
+            
+            <div class="example-block">
+                <p>• <strong>Câu trực tiếp:</strong> Mi said, “I want a new computer.” <em>(Mi nói, “Tôi muốn máy vi tính mới.”)</em></p>
+                <p>➔ <strong>Câu gián tiếp:</strong> Mi said (that) she wanted a new computer. <em>(Mi nói rằng cô ấy muốn máy vi tính mới.)</em></p>
+            </div>
+
+            <p>Để chuyển đổi một câu trực tiếp sang câu gián tiếp một cách chính xác, chúng ta bắt buộc phải thực hiện <strong>3 sự thay đổi cốt lõi</strong> sau đây:</p>
+
+            <h3>1. Thay đổi về Thì của động từ (Quy tắc lùi thì)</h3>
+            <p>Nếu động từ tường thuật ở quá khứ (như <em>said, told</em>), các động từ ở mệnh đề trực tiếp phải "lùi một thì" về quá khứ:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thì trong câu Trực tiếp</th>
+                        <th>Thì đổi sang Gián tiếp</th>
+                        <th>Ví dụ chuyển đổi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hiện tại đơn (Simple Present)</strong></td>
+                        <td>➔ <strong>Quá khứ đơn (Simple Past)</strong></td>
+                        <td>know / wants ➔ <strong>knew / wanted</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hiện tại tiếp diễn (Present Cont.)</strong></td>
+                        <td>➔ <strong>Quá khứ tiếp diễn (Past Cont.)</strong></td>
+                        <td>is developing ➔ <strong>was developing</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tương lai đơn (Future Simple)</strong></td>
+                        <td>➔ <strong>Tương lai trong quá khứ</strong></td>
+                        <td>will (+ V) ➔ <strong>would (+ V)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Thay đổi về Trạng từ chỉ Thời gian và Địa điểm</h3>
+            <p>Không gian và thời gian trong câu trực tiếp cần được dịch chuyển để phù hợp với thời điểm tường thuật:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Câu trực tiếp</th>
+                        <th>Câu gián tiếp</th>
+                        <th>Câu trực tiếp</th>
+                        <th>Câu gián tiếp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>now</strong></td><td>➔ then</td><td><strong>this week</strong></td><td>➔ that week</td></tr>
+                    <tr><td><strong>today</strong></td><td>➔ that day</td><td><strong>here</strong></td><td>➔ there</td></tr>
+                    <tr><td><strong>ago</strong></td><td>➔ before</td><td><strong>tomorrow</strong></td><td>➔ the following day / the next day</td></tr>
+                    <tr><td><strong>next month</strong></td><td>➔ the following month</td><td><strong>yesterday</strong></td><td>➔ the day before / the previous day</td></tr>
+                </tbody>
+            </table>
+
+            <h3>3. Thay đổi về Đại từ (Chủ ngữ, Tân ngữ, Tính từ sở hữu)</h3>
+            <p>Chúng ta thay đổi ngôi của đại từ dựa theo <b>người nói</b> và <b>người nghe</b> trong tình huống thực tế để câu văn không bị hiểu sai nghĩa:</p>
+            <ul>
+                <li><strong>Đại từ chủ ngữ:</strong> I ➔ he / she; &nbsp;&nbsp; we ➔ they</li>
+                <li><strong>Đại từ tân ngữ:</strong> me ➔ him / her; &nbsp;&nbsp; us ➔ them</li>
+                <li><strong>Tính từ sở hữu:</strong> my ➔ his / her; &nbsp;&nbsp; our ➔ their</li>
+            </ul>
+
+            <div class="note-box">
+                <strong>⚠️ Bẫy sử dụng động từ tường thuật SAY và TELL:</strong>
+                <br>• <strong>SAY:</strong> Dùng khi không nhắc đến người nghe cụ thể, hoặc có cấu trúc <em>say to somebody</em>. (Ví dụ: <em>He said (that) he was tired.</em>)
+                <br>• <strong>TELL:</strong> Bắt buộc phải có tân ngữ (người nghe) đi liền ngay sau. (Ví dụ: <em>He <strong>told me</strong> (that) he was tired.</em> - Tuyệt đối không viết <s>He said me</s>).
+            </div>
+
+            <div class="quiz-section" data-unit="11">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 11</div>
+                
+                <div class="question-item" data-correct="C" data-exp="Khi chuyển sang câu tường thuật, động từ 'will' phải lùi thì thành 'would'. Đồng thời, trạng từ thời gian 'tomorrow' bắt buộc phải đổi thành 'the following day' hoặc 'the next day'. Do đó chọn phương án C.">
+                    <p class="question-text">Câu 1: Phong said, "Scientists will invent a new robot tomorrow." <br>➔ Phong said scientists ___________ a new robot ___________.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u11q1" value="A"> will invent / tomorrow</label>
+                        <label class="option-label"><input type="radio" name="u11q1" value="B"> would invent / tomorrow</label>
+                        <label class="option-label"><input type="radio" name="u11q1" value="C"> would invent / the following day</label>
+                        <label class="option-label"><input type="radio" name="u11q1" value="D"> invented / the next day</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="B" data-exp="Vì động từ tường thuật phía trước là 'told me' (quá khứ), mệnh đề phía sau phải lùi thì từ Hiện tại tiếp diễn 'am working' thành Quá khứ tiếp diễn. Với chủ ngữ mới là 'he', ta chọn 'was working'. Trạng từ 'now' cũng được đổi thành 'then' một cách chính xác.">
+                    <p class="question-text">Câu 2: Nam told me, "I am working on my science project now." <br>➔ Nam told me that he ___________ on his science project ___________.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u11q2" value="A"> is working / now</label>
+                        <label class="option-label"><input type="radio" name="u11q2" value="B"> was working / then</label>
+                        <label class="option-label"><input type="radio" name="u11q2" value="C"> worked / then</label>
+                        <label class="option-label"><input type="radio" name="u11q2" value="D"> was working / now</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(11)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(12)">Học tiếp Unit 12 ➔</button>
+                </div>
+                <div class="score-box" id="score-u11"></div>
+            </div>
+        </section>
+
+        <section id="unit-12" class="unit-card">
+            <h2 class="unit-title">Unit 12: Life on other planets (Sự sống trên các hành tinh khác)</h2>
+            
+            <h3>Ngữ pháp chuyên sâu: Câu tường thuật dạng câu hỏi Wh- (Reported Speech - Wh-Questions)</h3>
+            <p>Trong chủ đề khám phá vũ trụ và các hành tinh, chúng ta thường sử dụng câu tường thuật để kể lại các câu hỏi phỏng vấn, sự tò mò hoặc nghi vấn của người khác.</p>
+            
+            <h3>1. Động từ giới thiệu và Quy tắc cấu trúc</h3>
+            <p>Khi tường thuật câu hỏi, chúng ta không dùng <em>said</em> hay <em>told</em> nữa mà thường sử dụng các động từ: <strong>asked</strong> (hỏi), <strong>wondered</strong> (tự hỏi), hoặc cụm từ <strong>wanted to know</strong> (muốn biết).</p>
+            
+            <div class="formula-box">
+                Cấu trúc: S1 + asked (+ tân ngữ) / wondered / wanted to know + Wh-word + S2 + V (lùi thì)
+            </div>
+
+            <div class="example-block">
+                <p>• <strong>Câu trực tiếp:</strong> She asked me, “What are you doing now?” <em>(Cô ấy hỏi tôi, “Bây giờ bạn đang làm gì?”)</em></p>
+                <p>➔ <strong>Câu gián tiếp:</strong> She asked me <strong>what I was doing then</strong>. <em>(Cô ấy hỏi tôi lúc đó tôi đang làm gì.)</em></p>
+            </div>
+
+            <h3>2. ⚠️ Hai quy tắc "Vàng" chống bẫy điểm tuyệt đối</h3>
+            <p>Học sinh khi làm bài tập viết lại câu hoặc trắc nghiệm rất dễ sai ở hai điểm mấu chốt sau:</p>
+            <ul>
+                <li>
+                    <strong>Đổi trật tự từ (Trần thuật hóa câu hỏi):</strong><br>
+                    Trong câu hỏi gián tiếp, chúng ta <b>không đảo trợ động từ lên trước chủ ngữ</b> giống như câu hỏi gốc nữa. Trật tự từ phải quay về dạng câu trần thuật: <strong>Chủ ngữ đứng trước, động từ đứng sau (S + V)</strong>, đồng thời <strong>bỏ dấu hỏi chấm (?)</strong> ở cuối câu.
+                    <br>• <em>Sai:</em> ...what <s>was I doing</s> then?
+                    <br>• <em>Đúng:</em> ...what <strong>I was doing</strong>.
+                </li>
+                <li>
+                    <strong>Kế thừa quy tắc thay đổi thành phần:</strong><br>
+                    Các bước lùi thì của động từ, thay đổi đại từ nhân xưng, tính từ sở hữu, và chuyển đổi trạng từ chỉ thời gian / địa điểm hoàn toàn **áp dụng y hệt** như quy tắc của câu trần thuật ở Unit 11.
+                    <br>• <em>Ví dụ:</em> <strong>now</strong> chuyển thành <strong>then</strong>, động từ <strong>are doing</strong> lùi thành <strong>was doing</strong>.
+                </li>
+            </ul>
+
+            <div class="note-box">
+                <strong>💡 Lưu ý về Tân ngữ đứng sau:</strong>
+                <br>• Động từ <strong>asked</strong> có thể đi kèm tân ngữ chỉ người nghe ở sau hoặc không cần (ví dụ: <em>He asked me...</em> hoặc <em>He asked...</em>).
+                <br>• Động từ <strong>wondered</strong> và cụm <strong>wanted to know</strong> tuyệt đối **KHÔNG** được thêm tân ngữ chỉ người ở ngay phía sau (không viết: <s>He wondered me</s> hoặc <s>He wanted to know me</s>).
+            </div>
+
+            <div class="quiz-section" data-unit="12">
+                <div class="quiz-header">✍️ Bài tập củng cố Unit 12</div>
+                
+                <div class="question-item" data-correct="C" data-exp="Khi tường thuật câu hỏi Wh-, trật tự vế sau phải đổi về dạng câu trần thuật (Chủ ngữ + Động từ). Đồng thời động từ 'will' phải lùi thì thành 'would'. Do đó, cấu trúc 'aliens would land' là đáp án chính xác nhất. Phương án D sai vì chưa lùi thì 'will'.">
+                    <p class="question-text">Câu 1: The boy asked, "Where will aliens land on Earth?" <br>➔ The boy asked where ___________ on Earth.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u12q1" value="A"> would aliens land</label>
+                        <label class="option-label"><input type="radio" name="u12q1" value="B"> will aliens land</label>
+                        <label class="option-label"><input type="radio" name="u12q1" value="C"> aliens would land</label>
+                        <label class="option-label"><input type="radio" name="u12q1" value="D"> aliens will land</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="question-item" data-correct="B" data-exp="Câu trực tiếp dùng thì Quá khứ đơn 'did you see' (kèm trợ động từ 'did'). Khi đưa vào câu tường thuật, trợ động từ 'did' bị bỏ hoàn toàn, trật tự từ đưa về S + V, và động từ chính phải lùi một thì từ Quá khứ đơn thành Quá khứ hoàn thành (had + V3/ed). Ngôi 'you' đổi thành 'he' theo tân ngữ 'him'.">
+                    <p class="question-text">Câu 2: She wondered, "What did you see in the sky, Nam?" <br>➔ She asked Nam what he ___________ in the sky.</p>
+                    <div class="options-list">
+                        <label class="option-label"><input type="radio" name="u12q2" value="A"> did he see</label>
+                        <label class="option-label"><input type="radio" name="u12q2" value="B"> had seen</label>
+                        <label class="option-label"><input type="radio" name="u12q2" value="C"> saw</label>
+                        <label class="option-label"><input type="radio" name="u12q2" value="D"> has seen</label>
+                    </div>
+                    <div class="explanation"></div>
+                </div>
+
+                <div class="btn-wrapper">
+                    <button class="btn btn-submit" onclick="gradeQuiz(12)">Chấm điểm</button>
+                    <button class="btn btn-nav" onclick="navigateUnit(13)">Học tiếp Unit 13 ➔</button>
+                </div>
+                <div class="score-box" id="score-u12"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Hàm lấy giá trị từ hộp chọn và kích hoạt điều hướng
+        function jumpToUnit() {
+            const selectElement = document.getElementById('unit-select');
+            const targetUnit = parseInt(selectElement.value);
+            
+            // Kiểm tra xem thẻ Section của Unit đó có tồn tại trong HTML không
+            const checkExist = document.getElementById(`unit-${targetUnit}`);
+            
+            if (checkExist) {
+                // Nếu có bài học, gọi hàm điều hướng cũ của bạn
+                navigateUnit(targetUnit);
+            } else {
+                alert(`Unit ${targetUnit} hiện tại chưa được nạp nội dung HTML. Hãy bổ sung thẻ <section id="unit-${targetUnit}"> trước đã nhé!`);
+            }
+        }
+
+        // Hàm chấm điểm chi tiết (gradeQuiz)
+        function gradeQuiz(unitNum) {
+            const currentSection = document.querySelector(`.quiz-section[data-unit="${unitNum}"]`);
+            const questions = currentSection.querySelectorAll('.question-item');
+            let correctCount = 0;
+            let totalQuestions = questions.length;
+
+            questions.forEach(question => {
+                const correctAnswer = question.getAttribute('data-correct');
+                const selected = question.querySelector('input[type="radio"]:checked');
+                const allLabels = question.querySelectorAll('.option-label');
+                const expBox = question.querySelector('.explanation');
+                const explanationText = question.getAttribute('data-exp');
+
+                // Khởi động lại trạng thái màu sắc cũ
+                allLabels.forEach(label => {
+                    label.classList.remove('correct-ans', 'wrong-ans');
+                });
+
+                // Luôn hiển thị đáp án đúng bằng màu xanh
+                allLabels.forEach(label => {
+                    if (label.querySelector('input').value === correctAnswer) {
+                        label.classList.add('correct-ans');
+                    }
+                });
+
+                // Xử lý kiểm tra lựa chọn của người học
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        correctCount++;
+                    } else {
+                        // Nếu chọn sai, bôi đỏ lựa chọn sai của người dùng
+                        selected.parentElement.classList.add('wrong-ans');
+                    }
+                }
+
+                // Hiển thị khung giải thích chi tiết đáp án
+                if (expBox && explanationText) {
+                    expBox.innerHTML = `<strong>Giải thích:</strong> ${explanationText}`;
+                    expBox.style.display = "block";
+                }
+            });
+
+            // Hiển thị tổng số điểm nhận được
+            const scoreDisplay = document.getElementById(`score-u${unitNum}`);
+            scoreDisplay.innerHTML = `Hệ thống chấm điểm: Bạn đúng ${correctCount}/${totalQuestions} câu.`;
+            scoreDisplay.style.display = "block";
+            
+            if (correctCount === totalQuestions) {
+                scoreDisplay.style.color = "var(--success-color)";
+            } else {
+                scoreDisplay.style.color = "var(--warning-color)";
+            }
+        }
+
+        // Hàm điều hướng bài học (navigateUnit)
+        function navigateUnit(targetUnitNum) {
+            document.querySelectorAll('.unit-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            const targetCard = document.getElementById(`unit-${targetUnitNum}`);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Hàm Reset ứng dụng về Unit đầu tiên
+        function resetApp() {
+            navigateUnit(1);
+        }
+    </script>
+</body>
+</html>
