@@ -5,16 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Success 8</title>
     <style>
-        :root {
-            --primary-color: #3b82f6;
-            --secondary-color: #1e293b;
+        :root[data-theme="light"] {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #0f172a;
             --success-color: #10b981;
             --danger-color: #ef4444;
             --warning-color: #f59e0b;
-            --bg-color: #f1f5f9;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-color: #334155;
-            --accent-purple: #8b5cf6;
+            --text-muted: #64748b;
+            --accent-purple: #7c3aed;
+            --border-color: #e2e8f0;
+            --vocab-bg: #f1f5f9;
+            --vocab-hover: #e0e7ff;
+            --formula-bg: #f8fafc;
+            --note-bg: #fffbeb;
+            --note-text: #b45309;
+            --example-bg: #f0fdf4;
+            --quiz-bg: #fafafa;
+            --input-bg: #ffffff;
+            --header-gradient: linear-gradient(135deg, #0f172a, #4f46e5);
+        }
+
+        :root[data-theme="dark"] {
+            --primary-color: #818cf8;
+            --primary-hover: #6366f1;
+            --secondary-color: #f8fafc;
+            --success-color: #34d399;
+            --danger-color: #f87171;
+            --warning-color: #fbbf24;
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --text-color: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-purple: #a78bfa;
+            --border-color: #374151;
+            --vocab-bg: #1f2937;
+            --vocab-hover: #1e1b4b;
+            --formula-bg: #1e293b;
+            --note-bg: #2d2006;
+            --note-text: #fef08a;
+            --example-bg: #062f1c;
+            --quiz-bg: #111827;
+            --input-bg: #1f2937;
+            --header-gradient: linear-gradient(135deg, #030712, #1e1b4b);
         }
 
         body {
@@ -24,20 +60,23 @@
             line-height: 1.7;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         header {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            background: var(--header-gradient);
             color: #ffffff;
             text-align: center;
             padding: 3rem 1rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative; /* Làm tâm điểm định vị cho nút con */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         header h1 {
             margin: 0;
             font-size: 2.6rem;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         header p {
@@ -46,7 +85,45 @@
             font-size: 1.2rem;
         }
 
-        /* CSS cho Thanh điều hướng nhanh */
+        /* Nút chuyển đổi Dark Mode - Luôn luôn khóa cứng ở góc phải */
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50; /* Luôn nổi lên trên các thành phần khác */
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hiệu ứng xoay icon khi đổi sang Dark Mode */
+        :root[data-theme="dark"] .theme-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        /* Thanh điều hướng nhanh */
         .quick-nav-bar {
             background-color: var(--card-bg);
             max-width: 1000px;
@@ -58,6 +135,7 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            border: 1px solid var(--border-color);
         }
 
         .quick-nav-bar label {
@@ -67,13 +145,13 @@
 
         #unit-select {
             padding: 0.6rem 1rem;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             font-size: 1rem;
             color: var(--text-color);
+            background-color: var(--input-bg);
             outline: none;
             cursor: pointer;
-            background-color: #fff;
         }
 
         #unit-select:focus {
@@ -92,7 +170,7 @@
         }
 
         .btn-jump:hover {
-            background-color: #7c3aed;
+            filter: brightness(1.1);
         }
 
         @media (max-width: 640px) {
@@ -117,6 +195,9 @@
             padding: 2.5rem;
             margin-bottom: 4rem;
             border-top: 6px solid var(--primary-color);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             display: none;
         }
 
@@ -135,7 +216,7 @@
             font-size: 2rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 0.75rem;
         }
 
@@ -157,8 +238,8 @@
         }
 
         .vocab-item {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background-color: var(--vocab-bg);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 1.2rem;
             transition: all 0.2s ease;
@@ -166,7 +247,7 @@
 
         .vocab-item:hover {
             border-color: var(--primary-color);
-            background-color: #f0f7ff;
+            background-color: var(--vocab-hover);
         }
 
         .vocab-word {
@@ -178,46 +259,47 @@
 
         .vocab-synonyms {
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--text-muted);
             margin-top: 0.2rem;
             font-style: italic;
+            display: block;
         }
 
         .vocab-mean {
-            color: var(--secondary-color);
+            color: var(--text-color);
             font-size: 1rem;
             margin-top: 0.5rem;
             font-weight: 500;
+            display: block;
         }
 
         /* Grammar & Note Boxes */
         .formula-box {
-            background-color: #f8fafc;
+            background-color: var(--formula-bg);
             border-radius: 10px;
             padding: 1.2rem;
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 1.05rem;
-            color: #0f172a;
+            color: var(--text-color);
             margin: 1rem 0;
-            border-left: 4px solid var(--warning-color);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--accent-purple);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .note-box {
-            background-color: #fffbeb;
+            background-color: var(--note-bg);
             border-left: 4px solid var(--warning-color);
             padding: 1rem 1.2rem;
             margin: 1rem 0;
             border-radius: 4px;
             font-size: 0.95rem;
-        }
-
-        .note-box strong {
-            color: #b45309;
+            color: var(--note-text);
         }
 
         .example-block {
-            background-color: #f0fdf4;
+            background-color: var(--example-bg);
             border-left: 4px solid var(--success-color);
             padding: 1rem;
             margin: 0.75rem 0;
@@ -232,7 +314,7 @@
         .badge {
             display: inline-block;
             padding: 0.25rem 0.6rem;
-            background-color: #dbeafe;
+            background-color: rgba(79, 70, 229, 0.15);
             color: var(--primary-color);
             border-radius: 6px;
             font-size: 0.85rem;
@@ -241,7 +323,7 @@
         }
 
         .badge-purple {
-            background-color: #f3e8ff;
+            background-color: rgba(124, 58, 237, 0.15);
             color: var(--accent-purple);
         }
 
@@ -253,24 +335,30 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
         }
 
         th, td {
             padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         th {
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--bg-color);
             font-weight: 600;
+        }
+
+        td {
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
         /* Quiz System */
         .quiz-section {
-            background-color: #fafafa;
-            border: 2px dashed #e2e8f0;
+            background-color: var(--quiz-bg);
+            border: 2px dashed var(--border-color);
             border-radius: 12px;
             padding: 2rem;
             margin-top: 3rem;
@@ -308,8 +396,8 @@
             display: flex;
             align-items: center;
             padding: 0.85rem 1rem;
-            background-color: #ffffff;
-            border: 1px solid #cbd5e1;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -318,7 +406,7 @@
 
         .option-label:hover {
             border-color: var(--primary-color);
-            background-color: #f8fafc;
+            background-color: var(--vocab-hover);
         }
 
         .option-label input {
@@ -326,24 +414,24 @@
             transform: scale(1.1);
         }
 
-        /* Chấm điểm Styles từ JS */
+        /* Trạng thái đáp án */
         .option-label.correct-ans {
-            background-color: #d1fae5 !important;
+            background-color: rgba(16, 185, 129, 0.2) !important;
             border-color: var(--success-color) !important;
-            color: #065f46;
+            color: var(--success-color);
             font-weight: 600;
         }
 
         .option-label.wrong-ans {
-            background-color: #fee2e2 !important;
+            background-color: rgba(239, 68, 68, 0.2) !important;
             border-color: var(--danger-color) !important;
-            color: #991b1b;
+            color: var(--danger-color);
         }
 
         .explanation {
             margin-top: 0.5rem;
             padding: 0.5rem 1rem;
-            background-color: #eff6ff;
+            background-color: var(--formula-bg);
             border-left: 3px solid var(--primary-color);
             border-radius: 0 4px 4px 0;
             font-size: 0.95rem;
@@ -372,7 +460,7 @@
             color: white;
         }
 
-        .btn-submit:hover { background-color: #2563eb; }
+        .btn-submit:hover { filter: brightness(1.1); }
 
         .btn-nav {
             background-color: var(--success-color);
@@ -380,7 +468,7 @@
             margin-left: auto;
         }
 
-        .btn-nav:hover { background-color: #059669; }
+        .btn-nav:hover { filter: brightness(1.1); }
 
         .score-box {
             margin-top: 1.5rem;
@@ -396,6 +484,12 @@
         <h1>Global Success 8</h1>
         <p>Học Ngữ Pháp & Từ Vựng Chi Tiết Trực Tuyến</p>
     </header>
+
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle Light/Dark Mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10m0-1.5v-17a8.5 8.5 0 1 1 0 17" fill="currentColor"/>
+        </svg>
+    </button>
 
     <div class="quick-nav-bar">
         <label for="unit-select">Chuyển nhanh đến: </label>
@@ -1602,23 +1696,46 @@
     </div>
 
     <script>
-        // Hàm lấy giá trị từ hộp chọn và kích hoạt điều hướng
+const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            let theme = htmlTag.getAttribute('data-theme');
+            let newTheme = (theme === 'dark') ? 'light' : 'dark';
+            
+            htmlTag.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Điều hướng nhanh thông qua hộp chọn danh sách bài học
         function jumpToUnit() {
             const selectElement = document.getElementById('unit-select');
             const targetUnit = parseInt(selectElement.value);
-            
-            // Kiểm tra xem thẻ Section của Unit đó có tồn tại trong HTML không
             const checkExist = document.getElementById(`unit-${targetUnit}`);
             
             if (checkExist) {
-                // Nếu có bài học, gọi hàm điều hướng cũ của bạn
                 navigateUnit(targetUnit);
             } else {
-                alert(`Unit ${targetUnit} hiện tại chưa được nạp nội dung HTML. Hãy bổ sung thẻ <section id="unit-${targetUnit}"> trước đã nhé!`);
+                alert(`Unit ${targetUnit} hiện tại chưa được nạp nội dung dữ liệu HTML.`);
             }
         }
 
-        // Hàm chấm điểm chi tiết (gradeQuiz)
+        // Chuyển đổi trạng thái hiển thị Active của các khối bài học
+        function navigateUnit(targetUnitNum) {
+            document.querySelectorAll('.unit-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            const targetCard = document.getElementById(`unit-${targetUnitNum}`);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                document.getElementById('unit-select').value = targetUnitNum;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Hệ thống kiểm tra và chấm điểm tự động
         function gradeQuiz(unitNum) {
             const currentSection = document.querySelector(`.quiz-section[data-unit="${unitNum}"]`);
             const questions = currentSection.querySelectorAll('.question-item');
@@ -1632,36 +1749,30 @@
                 const expBox = question.querySelector('.explanation');
                 const explanationText = question.getAttribute('data-exp');
 
-                // Khởi động lại trạng thái màu sắc cũ
                 allLabels.forEach(label => {
                     label.classList.remove('correct-ans', 'wrong-ans');
                 });
 
-                // Luôn hiển thị đáp án đúng bằng màu xanh
                 allLabels.forEach(label => {
                     if (label.querySelector('input').value === correctAnswer) {
                         label.classList.add('correct-ans');
                     }
                 });
 
-                // Xử lý kiểm tra lựa chọn của người học
                 if (selected) {
                     if (selected.value === correctAnswer) {
                         correctCount++;
                     } else {
-                        // Nếu chọn sai, bôi đỏ lựa chọn sai của người dùng
                         selected.parentElement.classList.add('wrong-ans');
                     }
                 }
 
-                // Hiển thị khung giải thích chi tiết đáp án
                 if (expBox && explanationText) {
                     expBox.innerHTML = `<strong>Giải thích:</strong> ${explanationText}`;
                     expBox.style.display = "block";
                 }
             });
 
-            // Hiển thị tổng số điểm nhận được
             const scoreDisplay = document.getElementById(`score-u${unitNum}`);
             scoreDisplay.innerHTML = `Hệ thống chấm điểm: Bạn đúng ${correctCount}/${totalQuestions} câu.`;
             scoreDisplay.style.display = "block";
@@ -1670,19 +1781,6 @@
                 scoreDisplay.style.color = "var(--success-color)";
             } else {
                 scoreDisplay.style.color = "var(--warning-color)";
-            }
-        }
-
-        // Hàm điều hướng bài học (navigateUnit)
-        function navigateUnit(targetUnitNum) {
-            document.querySelectorAll('.unit-card').forEach(card => {
-                card.classList.remove('active');
-            });
-
-            const targetCard = document.getElementById(`unit-${targetUnitNum}`);
-            if (targetCard) {
-                targetCard.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
     </script>
