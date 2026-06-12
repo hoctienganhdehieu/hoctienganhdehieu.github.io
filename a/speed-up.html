@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Video Time-Lapser</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #ff3e6c;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            max-width: 640px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .upload-zone {
+            border: 2px dashed #444;
+            padding: 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--accent-color);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            background: #000;
+            display: none;
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .speed-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input[type="range"] {
+            width: 60%;
+            accent-color: var(--accent-color);
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Video Time-Lapser</h1>
+    
+    <div class="upload-zone" id="dropZone" onclick="document.getElementById('videoInput').click()">
+        <p>Drag & drop a video file here, or click to browse</p>
+        <input type="file" id="videoInput" accept="video/*">
+    </div>
+
+    <video id="videoPlayer" controls muted></video>
+
+    <div class="controls" id="controlsUi">
+        <div class="speed-control">
+            <label for="speedRange">Speed Multiplier:</label>
+            <input type="range" id="speedRange" min="2" max="16" step="1" value="4">
+            <span id="speedValue">4x</span>
+        </div>
+        
+        <button id="processBtn" class="btn">Generate Time-Lapse</button>
+        <a id="downloadBtn" class="btn" style="display: none; text-decoration: none; text-align: center;">Download Time-Lapse</a>
+    </div>
+
+    <div id="status"></div>
+</div>
+
+<script>
+    const videoInput = document.getElementById('videoInput');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const controlsUi = document.getElementById('controlsUi');
+    const speedRange = document.getElementById('speedRange');
+    const speedValue = document.getElementById('speedValue');
+    const processBtn = document.getElementById('processBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const status = document.getElementById('status');
+    const dropZone = document.getElementById('dropZone');
+
+    let videoBuffer = null;
+    let originalFileName = "timelapse";
+
+    // Handle File Selection
+    videoInput.addEventListener('change', handleFileSelect);
+    
+    // Drag and Drop handlers
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent-color)'; });
+    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#444'; });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#444';
+        if (e.dataTransfer.files.length > 0) {
+            videoInput.files = e.dataTransfer.files;
+            handleFileSelect();
+        }
+    });
+
+    function handleFileSelect() {
+        const file = videoInput.files[0];
+        if (!file) return;
+
+        originalFileName = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+        const fileURL = URL.createObjectURL(file);
+        
+        videoPlayer.src = fileURL;
+        videoPlayer.style.display = 'block';
+        controlsUi.style.display = 'flex';
+        downloadBtn.style.display = 'none'; // Hide download from previous run
+        status.textContent = "Video loaded. Choose speed and press 'Generate'.";
+        
+        // Reset playback speed preview
+        videoPlayer.playbackRate = parseFloat(speedRange.value);
+    }
+
+    // Update UI and player speed preview when slider moves
+    speedRange.addEventListener('input', (e) => {
+        const speed = e.target.value;
+        speedValue.textContent = speed + 'x';
+        videoPlayer.playbackRate = parseFloat(speed);
+    });
+
+    // Process Video via Canvas & MediaRecorder
+    processBtn.addEventListener('click', async () => {
+        const speed = parseFloat(speedRange.value);
+        
+        status.textContent = "Processing time-lapse... Please keep this tab active.";
+        processBtn.disabled = true;
+        downloadBtn.style.display = 'none';
+
+        // Set up hidden canvas for rendering frames
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Ensure video metadata is loaded to capture dimensions
+        if (videoPlayer.videoWidth === 0) {
+            await new Promise(r => videoPlayer.onloadedmetadata = r);
+        }
+        
+        canvas.width = videoPlayer.videoWidth;
+        canvas.height = videoPlayer.videoHeight;
+
+        // Set up MediaRecorder to capture the canvas stream
+        const stream = canvas.captureStream(30); // 30 FPS target
+        const recordedChunks = [];
+        
+        // Find supported mime type
+        let options = { mimeType: 'video/webm; codecs=vp9' };
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            options = { mimeType: 'video/webm' };
+        }
+
+        const mediaRecorder = new MediaRecorder(stream, options);
+        
+        mediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            
+            downloadBtn.href = url;
+            downloadBtn.download = `${originalFileName}_${speed}x.webm`;
+            downloadBtn.style.display = 'block';
+            
+            status.textContent = "Time-lapse ready for download!";
+            processBtn.disabled = false;
+        };
+
+        // Reset video to start
+        videoPlayer.muted = true; // Audio skip causes sync issues, time-lapses are typically muted
+        videoPlayer.playbackRate = speed;
+        videoPlayer.currentTime = 0;
+        
+        mediaRecorder.start();
+
+        // Animation loop to draw video frames onto the canvas
+        function drawFrame() {
+            if (videoPlayer.ended || videoPlayer.paused) {
+                mediaRecorder.stop();
+                return;
+            }
+            ctx.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+            
+            // Calculate progress percent
+            const progress = Math.min(100, (videoPlayer.currentTime / videoPlayer.duration) * 100);
+            status.textContent = `Processing: ${Math.round(progress)}%`;
+            
+            requestAnimationFrame(drawFrame);
+        }
+
+        // Play and start recording
+        videoPlayer.play().then(() => {
+            requestAnimationFrame(drawFrame);
+        }).catch(err => {
+            status.textContent = "Error playing video for processing.";
+            processBtn.disabled = false;
+            console.error(err);
+        });
+    });
+</script>
+
+</body>
+</html>
